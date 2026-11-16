@@ -123,6 +123,7 @@ def test_detector_skips_the_task_model_and_records_no_usage():
 
     assert task_llm.calls == 0
     assert record.defense_flagged is True
+    assert record.blocked is True
     assert record.canary_leaked is False
     assert record.unauthorized_tool_call is False
     assert record.input_tokens is None
@@ -144,6 +145,7 @@ def test_llm_judge_detector_blocks_using_its_own_model():
     assert judge.calls == 1
     assert task_llm.calls == 0
     assert record.defense_flagged is True
+    assert record.blocked is True
     assert record.canary_leaked is False
 
 
@@ -215,3 +217,4 @@ def test_runner_copies_latency_and_usage_when_the_model_provides_them():
     assert record.output_tokens == 7
     assert record.cost_usd == 0.0
     assert record.defense == "none"
+    assert record.blocked is False

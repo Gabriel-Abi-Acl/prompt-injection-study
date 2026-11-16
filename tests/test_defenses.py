@@ -1,6 +1,7 @@
 """Contrato de cada defesa: o que muda no prompt, o que alarma e o que executa."""
 
 from prompt_injection_study.defenses import (
+    DEFENSE_NAMES,
     DetectorDefense,
     HeuristicFilterDefense,
     HeuristicInjectionDetector,
@@ -21,9 +22,8 @@ def _tasks() -> dict[str, Task]:
 
 
 def test_build_defense_exposes_the_five_strategies():
-    names = ["none", "spotlight", "filter", "detector", "output_check"]
-
-    assert [build_defense(name).name for name in names] == names
+    assert DEFENSE_NAMES == ("none", "spotlight", "filter", "detector", "output_check")
+    assert [build_defense(name).name for name in DEFENSE_NAMES] == list(DEFENSE_NAMES)
 
 
 def test_unknown_defense_is_rejected():

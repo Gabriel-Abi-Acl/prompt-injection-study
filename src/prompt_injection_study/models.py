@@ -72,7 +72,11 @@ class OutputReview:
 
 @dataclass(frozen=True)
 class RunRecord:
-    """Uma execução de tarefa × defesa. Ainda não é uma métrica agregada."""
+    """Uma execução de tarefa × defesa. Ainda não é uma métrica agregada.
+
+    `blocked` é a recusa antes do modelo da tarefa. O alarme (`defense_flagged`)
+    pode acontecer sem essa recusa, como no filtro e na checagem de saída.
+    """
 
     task_id: str
     defense: str
@@ -85,3 +89,4 @@ class RunRecord:
     output_tokens: int | None = None
     cost_usd: float | None = None
     executed_tools: tuple[str, ...] = ()
+    blocked: bool = False
