@@ -1,8 +1,8 @@
 """Tarefas sintéticas de placeholder, com e sem injeção benigna.
 
 Não há dado real nem payload nocivo. O gabarito (`canary`, `injected_tool`)
-serve para o teste offline; o dataset com rótulos para avaliação fica para o
-PR seguinte.
+serve para o teste offline do harness. O dataset versionado de avaliação
+está em `data/eval/tasks.v1.jsonl`.
 """
 
 from prompt_injection_study.models import Task
