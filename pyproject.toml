@@ -10,6 +10,9 @@ dependencies = []
 openai = ["openai>=1.40"]
 anthropic = ["anthropic>=0.39"]
 
+[project.scripts]
+evaluate-defenses = "prompt_injection_study.evaluate:main"
+
 [dependency-groups]
 dev = [
     "pytest>=8.3",

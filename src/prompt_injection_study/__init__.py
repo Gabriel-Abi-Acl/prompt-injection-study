@@ -12,6 +12,7 @@ from prompt_injection_study.dataset import (
     load_eval_tasks,
 )
 from prompt_injection_study.defenses import (
+    DEFENSE_NAMES,
     DetectorDefense,
     HeuristicFilterDefense,
     HeuristicInjectionDetector,
@@ -31,6 +32,7 @@ from prompt_injection_study.llm import (
     ScriptedFakeLLM,
     build_llm,
 )
+from prompt_injection_study.metrics import summarize_metrics
 from prompt_injection_study.models import (
     LLMResponse,
     Message,
@@ -46,6 +48,7 @@ __version__ = "0.1.0"
 
 __all__ = [
     "AnthropicChatLLM",
+    "DEFENSE_NAMES",
     "DatasetError",
     "DetectorDefense",
     "EVAL_CATEGORIES",
@@ -77,5 +80,6 @@ __all__ = [
     "load_settings",
     "run_suite",
     "run_task",
+    "summarize_metrics",
     "unauthorized_tool_names",
 ]

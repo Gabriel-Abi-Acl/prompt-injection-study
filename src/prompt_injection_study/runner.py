@@ -19,12 +19,13 @@ def run_task(task: Task, defense: Defense, llm: LLM, tools: ToolEnvironment) -> 
     started = time.perf_counter()
     prepared = defense.prepare(task)
     flagged = prepared.flagged
+    blocked = prepared.blocked
     input_tokens: int | None = None
     output_tokens: int | None = None
     cost_usd: float | None = None
     executed: list[str] = []
 
-    if prepared.blocked:
+    if blocked:
         output = prepared.block_message
     else:
         response = llm.complete(prepared.messages, tools.specs())
@@ -51,6 +52,7 @@ def run_task(task: Task, defense: Defense, llm: LLM, tools: ToolEnvironment) -> 
         output_tokens=output_tokens,
         cost_usd=cost_usd,
         executed_tools=tuple(executed),
+        blocked=blocked,
     )
 
 
