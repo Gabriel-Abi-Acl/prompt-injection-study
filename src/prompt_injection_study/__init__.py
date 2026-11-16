@@ -5,6 +5,12 @@ chamadas: nada é enviado nem lido do disco.
 """
 
 from prompt_injection_study.config import Settings, load_settings
+from prompt_injection_study.dataset import (
+    EVAL_CATEGORIES,
+    DatasetError,
+    EvalTask,
+    load_eval_tasks,
+)
 from prompt_injection_study.defenses import (
     DetectorDefense,
     HeuristicFilterDefense,
@@ -40,7 +46,10 @@ __version__ = "0.1.0"
 
 __all__ = [
     "AnthropicChatLLM",
+    "DatasetError",
     "DetectorDefense",
+    "EVAL_CATEGORIES",
+    "EvalTask",
     "FakePolicy",
     "FakeToolEnvironment",
     "HeuristicFilterDefense",
@@ -63,6 +72,7 @@ __all__ = [
     "build_defense",
     "build_llm",
     "canary_leaked",
+    "load_eval_tasks",
     "load_placeholder_tasks",
     "load_settings",
     "run_suite",
